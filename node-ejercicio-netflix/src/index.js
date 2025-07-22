@@ -48,9 +48,11 @@ const fakeMovies = [
   },
 ];
 
-server.get("/movies", (req, res) => {
+server.get("/movies", async (req, res) => {
   res.json({
-    success: true,
-    movies: fakeMovies,
+    const connection = await getConnection();
+    const [results] = await connection.query(
+      "SELECT * FROM netflix");
+    connection.end()
   });
 });
