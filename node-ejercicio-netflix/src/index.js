@@ -25,7 +25,7 @@ const getConnection = async () => {
     });
 };
 
-const fakeMovies = [
+/* const fakeMovies = [
   {
     id: 1,
     title: "Wonder Woman",
@@ -46,13 +46,17 @@ const fakeMovies = [
     year: 2010,
     director: "Christopher Nolan",
   },
-];
+]; */
 
 server.get("/movies", async (req, res) => {
-  res.json({
     const connection = await getConnection();
-    const [results] = await connection.query(
-      "SELECT * FROM netflix");
-    connection.end()
-  });
+    const [results] = await connection.query('SELECT * FROM movies');
+    connection.end()   
+    
+    //respuesta con un código de respuesta y los datos que quiero enviar
+    res.status(200).json({
+        success: true, movies: results
+    })
+
 });
+
