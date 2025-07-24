@@ -10,7 +10,7 @@ server.use(cors());
 server.use(express.json());
 
 // init express aplication
-const serverPort = 4000;
+const serverPort = 4001;
 server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
@@ -21,7 +21,7 @@ const getConnection = async () => {
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
-        port: process.env.PORT
+        port: process.env.DB_PORT
     });
 };
 
